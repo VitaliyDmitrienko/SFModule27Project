@@ -40,7 +40,7 @@ public class University {
 
     @Override
     public String toString() {
-        return "University{" +
+        return "University: {" +
                 "id='" + id + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", shortName='" + shortName + '\'' +

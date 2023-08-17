@@ -33,7 +33,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Student: {" +
                 "fullName='" + fullName + '\'' +
                 ", universityId='" + universityId + '\'' +
                 ", currentCourseNumber=" + currentCourseNumber +
