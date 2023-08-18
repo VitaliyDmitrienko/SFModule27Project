@@ -14,6 +14,47 @@ public class Statistics {
     private String universityListStat;
 
     public Statistics () {}
+
+    public StudyProfile getStudyProfile() {
+        return studyProfile;
+    }
+
+    public void setStudyProfile(StudyProfile studyProfile) {
+        this.studyProfile = studyProfile;
+    }
+
+    public float getAvgExamScore() {
+        return avgExamScore;
+    }
+
+    public void setAvgExamScore(float avgExamScore) {
+        this.avgExamScore = avgExamScore;
+    }
+
+    public int getQuantityProfileStudents() {
+        return quantityProfileStudents;
+    }
+
+    public void setQuantityProfileStudents(int quantityProfileStudents) {
+        this.quantityProfileStudents = quantityProfileStudents;
+    }
+
+    public int getQuantityProfileUniversity() {
+        return quantityProfileUniversity;
+    }
+
+    public void setQuantityProfileUniversity(int quantityProfileUniversity) {
+        this.quantityProfileUniversity = quantityProfileUniversity;
+    }
+
+    public String getUniversityListStat() {
+        return universityListStat;
+    }
+
+    public void setUniversityListStat(String universityListStat) {
+        this.universityListStat = universityListStat;
+    }
+
     public Statistics (StudyProfile studyProfile, float avgExamScore, int quantityProfileStudents,
                        int quantityProfileUniversity, String universityListStat) {}
 
