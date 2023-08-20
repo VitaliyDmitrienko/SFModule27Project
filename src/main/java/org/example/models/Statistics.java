@@ -3,6 +3,7 @@ package org.example.models;
 
 import org.example.enums.StudyProfile;
 
+import java.util.List;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.Set;
@@ -13,14 +14,13 @@ public class Statistics {
     private OptionalDouble avgExamScore;
     private OptionalInt quantityProfileStudents;
     private OptionalInt quantityProfileUniversity;
-    private String universityListStat;
+    private Set<String> universityListStat;
     private OptionalDouble tmpSumAvgExamScore;
 
 
-    public Statistics () {}
     public Statistics (StudyProfile studyProfile, float avgExamScore,
                        int quantityProfileStudents,
-                       int quantityProfileUniversity, String universityListStat) {
+                       int quantityProfileUniversity, Set<String> universityListStat) {
         this.studyProfile = studyProfile;
         this.avgExamScore = OptionalDouble.of(avgExamScore);
         this.quantityProfileStudents = OptionalInt.of(quantityProfileStudents);
@@ -41,11 +41,11 @@ public class Statistics {
         return avgExamScore;
     }
 
-    public void setAvgExamScore(OptionalDouble avgExamScore) {
-        this.avgExamScore = avgExamScore;
+    public void setAvgExamScore(OptionalDouble setAvgExamScore) {
+        this.avgExamScore = setAvgExamScore;
     }
     public void updateAvgExamScore(OptionalDouble addAvgExamScore) {
-        tmpSumAvgExamScore = tmpSumAvgExamScore.add(addAvgExamScore);
+        tmpSumAvgExamScore += addAvgExamScore;
         OptionalDouble tmpAvgExamScore = tmpSumAvgExamScore / getQuantityProfileStudents();
         setAvgExamScore(tmpAvgExamScore);
     }
@@ -57,7 +57,7 @@ public class Statistics {
     public void setQuantityProfileStudents(int quantityProfileStudents) {
         this.quantityProfileStudents = OptionalInt.of(quantityProfileStudents);
     }
-    public void addQuantityProfileStudents(int addQuantityProfileStudents) {
+    public void addQuantityProfileStudents(OptionalDouble addQuantityProfileStudents) {
         this.quantityProfileStudents += addQuantityProfileStudents;
     }
 
@@ -72,7 +72,7 @@ public class Statistics {
         this.quantityProfileUniversity += addQuantityProfileUniversity;
     }
     public void updateQuantityProfileUniversity() {
-        this.quantityProfileUniversity = this.universityListStat.size();
+        this.quantityProfileUniversity = OptionalInt.of(this.universityListStat.size());
     }
 
     public Set<String> getUniversityListStat() {

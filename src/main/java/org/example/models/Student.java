@@ -4,6 +4,7 @@ package org.example.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
+import java.util.OptionalDouble;
 
 public class Student {
     @SerializedName("StudFullName")

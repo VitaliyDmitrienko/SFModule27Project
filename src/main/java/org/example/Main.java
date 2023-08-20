@@ -33,6 +33,8 @@ public class Main {
 //        Utility Class XLSXFileWriter() has private constructor & forbidden to create instance
 //        System.out.println(new XLSXFileWriter());
 
+        String outputFilePath = "src\\main\\resources\\StatisticsOutput.xlsx";
+
 
         List<Student> studentDataStorage = new ArrayList<>(XLSXFileReader.getStudentData());
         List<University> universityDataStorage = new ArrayList<>(XLSXFileReader.getUniversityData());
@@ -41,6 +43,10 @@ public class Main {
 
         Set<Statistics> finalStatistics = StatisticsGenerator.statisticsCreator(studentDataStorage, universityDataStorage);
         System.out.println(finalStatistics);
+
+        XLSXFileWriter.generateStatistics(finalStatistics, outputFilePath);
+
+
 
     }
 }

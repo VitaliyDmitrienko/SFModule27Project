@@ -5,10 +5,7 @@ import org.example.models.Statistics;
 import org.example.models.Student;
 import org.example.models.University;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class StatisticsGenerator {
     private StatisticsGenerator () {
@@ -28,13 +25,13 @@ public class StatisticsGenerator {
 
         for (StudyProfile studyProfile: studyProfileStats) {
             Statistics currentStatistics = new Statistics(studyProfile,
-                    0, 0, 0, "");
+                    0, 0, 0, new HashSet<>());
             for (University university : inputUniversityList) {
                 for (Student student : inputStudentList) {
                     if (university.getMainProfile().equals(studyProfile)) {
                         if (university.getId().equals(student.getUniversityId())) {
-                            currentStatistics.addQuantityProfileStudents(1);
-                            currentStatistics.updateAvgExamScore(student.getAvgExamScore());
+                            currentStatistics.addQuantityProfileStudents(OptionalDouble.of(1.0));
+                            currentStatistics.updateAvgExamScore(OptionalDouble.of(student.getAvgExamScore()));
                             currentStatistics.updateQuantityProfileUniversity();
                             currentStatistics.updateUniversityListStat(university.getShortName());
                             outputStatistics.add(currentStatistics);
