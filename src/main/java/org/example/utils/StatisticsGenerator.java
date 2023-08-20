@@ -18,15 +18,17 @@ public class StatisticsGenerator {
 
     public static Set<Statistics> statisticsCreator (List<Student> inputStudentList,
                                               List<University> inputUniversityList) {
+
         Set<StudyProfile> studyProfileStats = new HashSet<>();
         Set<Statistics> outputStatistics = new HashSet<>();
+
         for (University university: inputUniversityList) {
             studyProfileStats.add(university.getMainProfile());
         }
 
         for (StudyProfile studyProfile: studyProfileStats) {
             Statistics currentStatistics = new Statistics(studyProfile,
-                    0, 0, 0, new HashSet<>());
+                    0, 0, 0, "");
             for (University university : inputUniversityList) {
                 for (Student student : inputStudentList) {
                     if (university.getMainProfile().equals(studyProfile)) {
@@ -40,6 +42,8 @@ public class StatisticsGenerator {
                     }
                 }
             }
+            outputStatistics.add(currentStatistics);
+
         }
 
         System.out.println(studyProfileStats);

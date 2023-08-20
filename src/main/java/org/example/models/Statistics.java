@@ -3,27 +3,28 @@ package org.example.models;
 
 import org.example.enums.StudyProfile;
 
-import java.util.List;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 import java.util.Set;
 
 public class Statistics {
 
     private StudyProfile studyProfile;
-    private float avgExamScore;
-    private int quantityProfileStudents;
-    private int quantityProfileUniversity;
-    private Set<String> universityListStat;
-    private float tmpSumAvgExamScore;
+    private OptionalDouble avgExamScore;
+    private OptionalInt quantityProfileStudents;
+    private OptionalInt quantityProfileUniversity;
+    private String universityListStat;
+    private OptionalDouble tmpSumAvgExamScore;
 
 
     public Statistics () {}
     public Statistics (StudyProfile studyProfile, float avgExamScore,
                        int quantityProfileStudents,
-                       int quantityProfileUniversity, Set<String> universityListStat) {
+                       int quantityProfileUniversity, String universityListStat) {
         this.studyProfile = studyProfile;
-        this.avgExamScore = avgExamScore;
-        this.quantityProfileStudents = quantityProfileStudents;
-        this.quantityProfileUniversity = quantityProfileUniversity;
+        this.avgExamScore = OptionalDouble.of(avgExamScore);
+        this.quantityProfileStudents = OptionalInt.of(quantityProfileStudents);
+        this.quantityProfileUniversity = OptionalInt.of(quantityProfileUniversity);
         this.universityListStat = universityListStat;
     }
 
@@ -36,38 +37,38 @@ public class Statistics {
         this.studyProfile = studyProfile;
     }
 
-    public float getAvgExamScore() {
+    public OptionalDouble getAvgExamScore() {
         return avgExamScore;
     }
 
-    public void setAvgExamScore(float avgExamScore) {
+    public void setAvgExamScore(OptionalDouble avgExamScore) {
         this.avgExamScore = avgExamScore;
     }
-    public void updateAvgExamScore(float addAvgExamScore) {
-        tmpSumAvgExamScore += addAvgExamScore;
-        float tmpAvgExamScore = tmpSumAvgExamScore/getQuantityProfileStudents();
+    public void updateAvgExamScore(OptionalDouble addAvgExamScore) {
+        tmpSumAvgExamScore = tmpSumAvgExamScore.add(addAvgExamScore);
+        OptionalDouble tmpAvgExamScore = tmpSumAvgExamScore / getQuantityProfileStudents();
         setAvgExamScore(tmpAvgExamScore);
     }
 
-    public int getQuantityProfileStudents() {
+    public OptionalInt getQuantityProfileStudents() {
         return quantityProfileStudents;
     }
 
     public void setQuantityProfileStudents(int quantityProfileStudents) {
-        this.quantityProfileStudents = quantityProfileStudents;
+        this.quantityProfileStudents = OptionalInt.of(quantityProfileStudents);
     }
     public void addQuantityProfileStudents(int addQuantityProfileStudents) {
         this.quantityProfileStudents += addQuantityProfileStudents;
     }
 
-    public int getQuantityProfileUniversity() {
+    public OptionalInt getQuantityProfileUniversity() {
         return quantityProfileUniversity;
     }
 
     public void setQuantityProfileUniversity(int quantityProfileUniversity) {
-        this.quantityProfileUniversity = quantityProfileUniversity;
+        this.quantityProfileUniversity = OptionalInt.of(quantityProfileUniversity);
     }
-    public void addQuantityProfileUniversity(int addQuantityProfileUniversity) {
+    public void addQuantityProfileUniversity(OptionalInt addQuantityProfileUniversity) {
         this.quantityProfileUniversity += addQuantityProfileUniversity;
     }
     public void updateQuantityProfileUniversity() {
