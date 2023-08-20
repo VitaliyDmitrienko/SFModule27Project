@@ -13,11 +13,11 @@ public class StatisticsGenerator {
         System.out.println("Forbidden to create this class instance.");
     }
 
-    public static Set<Statistics> statisticsCreator (List<Student> inputStudentList,
+    public static List<Statistics> statisticsCreator (List<Student> inputStudentList,
                                               List<University> inputUniversityList) {
 
         Set<StudyProfile> studyProfileStats = new HashSet<>();
-        Set<Statistics> outputStatistics = new HashSet<>();
+        Set<Statistics> outputStatistics = new LinkedHashSet<>();
 
         for (University university: inputUniversityList) {
             studyProfileStats.add(university.getMainProfile());
@@ -30,8 +30,10 @@ public class StatisticsGenerator {
                 for (Student student : inputStudentList) {
                     if (university.getMainProfile().equals(studyProfile)) {
                         if (university.getId().equals(student.getUniversityId())) {
-                            currentStatistics.addQuantityProfileStudents(OptionalDouble.of(1.0));
-                            currentStatistics.updateAvgExamScore(OptionalDouble.of(student.getAvgExamScore()));
+                            currentStatistics.addQuantityProfileStudents((1));
+//                            currentStatistics.addQuantityProfileStudents(OptionalDouble.of(1.0));
+                            currentStatistics.updateAvgExamScore((student.getAvgExamScore()));
+//                            currentStatistics.updateAvgExamScore(OptionalDouble.of(student.getAvgExamScore()));
                             currentStatistics.updateQuantityProfileUniversity();
                             currentStatistics.updateUniversityListStat(university.getShortName());
                             outputStatistics.add(currentStatistics);
@@ -42,10 +44,9 @@ public class StatisticsGenerator {
             outputStatistics.add(currentStatistics);
 
         }
+        List<Statistics> finalStatistics = new ArrayList<>(outputStatistics);
 
-        System.out.println(studyProfileStats);
-
-        return outputStatistics;
+        return finalStatistics;
     }
 
 }

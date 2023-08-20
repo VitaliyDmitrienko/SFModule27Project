@@ -39,10 +39,10 @@ public class Main {
         List<Student> studentDataStorage = new ArrayList<>(XLSXFileReader.getStudentData());
         List<University> universityDataStorage = new ArrayList<>(XLSXFileReader.getUniversityData());
 
-        System.out.println("Main Class & other classes templates Test.");
+//        System.out.println("Main Class & other classes templates Test.");
 
-        Set<Statistics> finalStatistics = StatisticsGenerator.statisticsCreator(studentDataStorage, universityDataStorage);
-        System.out.println(finalStatistics);
+        List<Statistics> finalStatistics = StatisticsGenerator.statisticsCreator(studentDataStorage, universityDataStorage);
+//        System.out.println(finalStatistics);
 
         XLSXFileWriter.generateStatistics(finalStatistics, outputFilePath);
 
