@@ -4,6 +4,7 @@ package org.example.models;
 import org.example.enums.StudyProfile;
 
 import java.util.List;
+import java.util.Set;
 
 public class Statistics {
 
@@ -11,9 +12,21 @@ public class Statistics {
     private float avgExamScore;
     private int quantityProfileStudents;
     private int quantityProfileUniversity;
-    private String universityListStat;
+    private Set<String> universityListStat;
+    private float tmpSumAvgExamScore;
+
 
     public Statistics () {}
+    public Statistics (StudyProfile studyProfile, float avgExamScore,
+                       int quantityProfileStudents,
+                       int quantityProfileUniversity, Set<String> universityListStat) {
+        this.studyProfile = studyProfile;
+        this.avgExamScore = avgExamScore;
+        this.quantityProfileStudents = quantityProfileStudents;
+        this.quantityProfileUniversity = quantityProfileUniversity;
+        this.universityListStat = universityListStat;
+    }
+
 
     public StudyProfile getStudyProfile() {
         return studyProfile;
@@ -30,6 +43,11 @@ public class Statistics {
     public void setAvgExamScore(float avgExamScore) {
         this.avgExamScore = avgExamScore;
     }
+    public void updateAvgExamScore(float addAvgExamScore) {
+        tmpSumAvgExamScore += addAvgExamScore;
+        float tmpAvgExamScore = tmpSumAvgExamScore/getQuantityProfileStudents();
+        setAvgExamScore(tmpAvgExamScore);
+    }
 
     public int getQuantityProfileStudents() {
         return quantityProfileStudents;
@@ -37,6 +55,9 @@ public class Statistics {
 
     public void setQuantityProfileStudents(int quantityProfileStudents) {
         this.quantityProfileStudents = quantityProfileStudents;
+    }
+    public void addQuantityProfileStudents(int addQuantityProfileStudents) {
+        this.quantityProfileStudents += addQuantityProfileStudents;
     }
 
     public int getQuantityProfileUniversity() {
@@ -46,16 +67,32 @@ public class Statistics {
     public void setQuantityProfileUniversity(int quantityProfileUniversity) {
         this.quantityProfileUniversity = quantityProfileUniversity;
     }
+    public void addQuantityProfileUniversity(int addQuantityProfileUniversity) {
+        this.quantityProfileUniversity += addQuantityProfileUniversity;
+    }
+    public void updateQuantityProfileUniversity() {
+        this.quantityProfileUniversity = this.universityListStat.size();
+    }
 
-    public String getUniversityListStat() {
+    public Set<String> getUniversityListStat() {
         return universityListStat;
     }
 
-    public void setUniversityListStat(String universityListStat) {
+    public void setUniversityListStat(Set<String> universityListStat) {
         this.universityListStat = universityListStat;
     }
+    public void updateUniversityListStat(String updateUniversityListStat) {
+        this.universityListStat.add(updateUniversityListStat);
+    }
 
-    public Statistics (StudyProfile studyProfile, float avgExamScore, int quantityProfileStudents,
-                       int quantityProfileUniversity, String universityListStat) {}
-
+    @Override
+    public String toString() {
+        return "Statistics: {" +
+                "studyProfile = " + studyProfile +
+                ", avgExamScore = " + avgExamScore +
+                ", quantityProfileStudents = " + quantityProfileStudents +
+                ", quantityProfileUniversity = " + quantityProfileUniversity +
+                ", universityListStat = " + universityListStat + '\'' +
+                '}' + "\n";
+    }
 }

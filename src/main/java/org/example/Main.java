@@ -2,6 +2,7 @@
 package org.example;
 
 
+import org.example.models.Statistics;
 import org.example.models.Student;
 import org.example.models.University;
 import org.example.utils.JsonUtils;
@@ -12,6 +13,7 @@ import org.example.utils.XLSXFileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 
@@ -37,8 +39,8 @@ public class Main {
 
         System.out.println("Main Class & other classes templates Test.");
 
-        StatisticsGenerator.statisticsCreator(studentDataStorage, universityDataStorage);
-
+        Set<Statistics> finalStatistics = StatisticsGenerator.statisticsCreator(studentDataStorage, universityDataStorage);
+        System.out.println(finalStatistics);
 
     }
 }
