@@ -65,7 +65,7 @@ public class XLSXFileWriter {
                 row.createCell(1).setCellValue(statisticsList.get(i).getAvgExamScore());
                 row.createCell(2).setCellValue(statisticsList.get(i).getQuantityProfileStudents());
                 row.createCell(3).setCellValue(statisticsList.get(i).getQuantityProfileUniversity());
-                row.createCell(4).setCellValue(statisticsList.get(i).getUniversityListStat().toString());
+                row.createCell(4).setCellValue(statisticsList.get(i).getUniversityListStat());
 
 
             }

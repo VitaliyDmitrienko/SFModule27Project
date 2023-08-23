@@ -7,7 +7,7 @@ import org.example.enums.StudyProfile;
 public class Statistics {
 
     private StudyProfile studyProfile;
-    private float avgExamScore;
+    private double avgExamScore;
     private int quantityProfileStudents;
     private int quantityProfileUniversity;
     private String universityListStat;
@@ -17,6 +17,7 @@ public class Statistics {
     public Statistics() {}
 
 
+//    old version
 //    public Statistics (StudyProfile studyProfile, float avgExamScore,
 //                       int quantityProfileStudents,
 //                       int quantityProfileUniversity, String universityListStat) {
@@ -37,13 +38,14 @@ public class Statistics {
         this.studyProfile = studyProfile;
     }
 
-    public float getAvgExamScore() {
+    public double getAvgExamScore() {
         return avgExamScore;
     }
 
-    public void setAvgExamScore(float setAvgExamScore) {
+    public void setAvgExamScore(double setAvgExamScore) {
         this.avgExamScore = setAvgExamScore;
     }
+
 //    public void updateAvgExamScore(float addAvgExamScore) {
 //        tmpSumAvgExamScore += addAvgExamScore;
 //        float tmpAvgExamScore = tmpSumAvgExamScore / getQuantityProfileStudents();
