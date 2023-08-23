@@ -52,7 +52,7 @@ public class Main {
 
         List<Statistics> finalStatistics = StatisticsGeneratorNew.statisticsCreator(studentDataStorage, universityDataStorage);
 //        List<Statistics> finalStatistics = StatisticsGeneratorOld.statisticsCreator(studentDataStorage, universityDataStorage);
-        System.out.println(finalStatistics);
+//        System.out.println(finalStatistics);
 
         XLSXFileWriter.generateStatistics(finalStatistics, outputFilePath);
 
