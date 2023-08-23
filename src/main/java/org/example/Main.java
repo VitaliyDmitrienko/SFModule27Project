@@ -42,7 +42,7 @@ public class Main {
 //        System.out.println("Main Class & other classes templates Test.");
 
         List<Statistics> finalStatistics = StatisticsGenerator.statisticsCreator(studentDataStorage, universityDataStorage);
-//        System.out.println(finalStatistics);
+        System.out.println(finalStatistics);
 
         XLSXFileWriter.generateStatistics(finalStatistics, outputFilePath);
 
