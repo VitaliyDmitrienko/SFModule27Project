@@ -2,13 +2,14 @@
 package org.example;
 
 
+import org.example.comparators.studentComparators.IStudentComparator;
+import org.example.comparators.universityComparators.IUniversityComparator;
+import org.example.enums.EStudentMethodComparator;
+import org.example.enums.EUniversityMethodComparator;
 import org.example.models.Statistics;
 import org.example.models.Student;
 import org.example.models.University;
-import org.example.utils.JsonUtils;
-import org.example.utils.StatisticsGenerator;
-import org.example.utils.XLSXFileReader;
-import org.example.utils.XLSXFileWriter;
+import org.example.utils.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,15 +34,24 @@ public class Main {
 //        Utility Class XLSXFileWriter() has private constructor & forbidden to create instance
 //        System.out.println(new XLSXFileWriter());
 
+//        Utility Class StatisticsGeneratorNew() has private constructor & forbidden to create instance
+//        System.out.println(new StatisticsGeneratorNew());
+
         String outputFilePath = "src\\main\\resources\\StatisticsOutput.xlsx";
 
 
         List<Student> studentDataStorage = new ArrayList<>(XLSXFileReader.getStudentData());
+        IStudentComparator studentComparator =
+                UnitedComparator.getStudentComparator(EStudentMethodComparator.STUDENT_AVG_EXAM_SCORE_COMPARATOR);
+        studentDataStorage.sort(studentComparator);
+
         List<University> universityDataStorage = new ArrayList<>(XLSXFileReader.getUniversityData());
+        IUniversityComparator universityComparator =
+                UnitedComparator.getUniversityComparator(EUniversityMethodComparator.UNIVERSITY_YEAR_OF_FOUNDATION_COMPARATOR);
+        universityDataStorage.sort(universityComparator);
 
-//        System.out.println("Main Class & other classes templates Test.");
-
-        List<Statistics> finalStatistics = StatisticsGenerator.statisticsCreator(studentDataStorage, universityDataStorage);
+        List<Statistics> finalStatistics = StatisticsGeneratorNew.statisticsCreator(studentDataStorage, universityDataStorage);
+//        List<Statistics> finalStatistics = StatisticsGeneratorOld.statisticsCreator(studentDataStorage, universityDataStorage);
         System.out.println(finalStatistics);
 
         XLSXFileWriter.generateStatistics(finalStatistics, outputFilePath);

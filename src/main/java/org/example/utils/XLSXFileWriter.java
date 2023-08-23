@@ -20,8 +20,7 @@ public class XLSXFileWriter {
 
             Sheet sheet = workbook.createSheet("Statistics");
             for (int i = 0; i <= statisticsList.size(); i++) {
-                sheet.setColumnWidth(i, 7000);
-
+                sheet.autoSizeColumn(i);
             }
 
             Row header = sheet.createRow(0);
